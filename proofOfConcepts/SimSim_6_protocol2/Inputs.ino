@@ -6,7 +6,7 @@ int pos = 0;
 void changePosition(char command){//recieves either a "o" or a "c"
   int dir = turnDirection
   if (command=='o') {pos = openAngle; dir=dir} if (command=='c') {pos = closedAngle; dir=-dir;}
-  turnMotor(pos,dir);
+  turnMotor(pos,dir); // this function is different for servo and dc motor
   if (getPosition() != command) {jamAlert();}
 }
 
