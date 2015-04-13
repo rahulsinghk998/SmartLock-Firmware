@@ -1,6 +1,5 @@
 //=============setup====================
 
-//experiment
 
 #include <SoftwareSerial.h>
 
