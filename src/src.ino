@@ -41,7 +41,12 @@ void loop() {// this is an infinite loop.  It runs until you turn the arduino of
   delay(100); digitalWrite(13,HIGH); delay(100); digitalWrite(13,LOW); // otherwise it's going to break
   // this is the blinking led 13.  delay is just a delay in miliseconds.  Kind of to keep the loop rate reasonable.
 
-if (BLE.available() > 0) {char command=BLE.read(); changePosition(command);} // your job is to replace this line.
+if (BLE.available() > 0) {char command=BLE.read(); 
+
+// =============================== MOST IMPORTANT ==========================
+changePosition(command);} // your job is to replace this line. 
+// right now change position only accepts 'c' and 'o'
+// =============================== MOST IMPORTANT ==========================
 
       // testing purposes
       givePosition(); // for now this is our output.  see the output file.
