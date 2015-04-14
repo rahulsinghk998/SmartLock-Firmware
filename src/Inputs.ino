@@ -3,6 +3,11 @@
 
 int pos = 0;
 
+// the main function to watch out for is changePosition.  It uses a helper function "turnMotor".  Turnmotor is different for
+// DC motor and servos.  Turnmotor accepts two inputs, pos, and dir.  pos is the angle it should move to.  dir is the 
+// how it gets there (clockwise or counterclockwise) which is kind of a lie because servos can only get there in one
+// direction so the dir variable is only used for DC motors.
+
 void changePosition(char command){//recieves either a "o" or a "c"
   int dir = turnDirection
   if (command=='o') {pos = openAngle; dir=dir} if (command=='c') {pos = closedAngle; dir=-dir;}
