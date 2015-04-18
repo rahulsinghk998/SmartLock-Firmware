@@ -21,19 +21,9 @@ int pot = 'c'; // on potentiometer
 
 void setup() 
 { 
+   Serial.begin(9600);
   myservo.attach(servoPin);  // attaches the servo on pin 9 to the servo object 
-
-Serial.print("begin setup");
-
-  Serial.begin(9600);  // Begin the serial monitor at 9600bps
-
-  bluetooth.begin(115200);  // The Bluetooth Mate defaults to 115200bps
-  delay(100);  // Short delay, wait for the Mate to send back CMD
-  bluetooth.println("U,9600,N");  // Temporarily Change the baudrate to 9600, no parity
-  // 115200 can be too fast at times for NewSoftSerial to relay the data reliably
-  bluetooth.begin(9600);  // Start bluetooth serial at 9600
-  Serial.print("end setup");
-
+  bluetooth.begin(9600);
   pinMode(13,OUTPUT);
 } 
  
@@ -42,23 +32,27 @@ delay(100); // otherwise it's going to break
 digitalWrite(13,HIGH);
 delay(100);
 digitalWrite(13,LOW);
- Serial.println("out");
+ 
  //==================Take commands================
  
+ Serial.println("hey");
  if (bluetooth.available() > 0) { 
-   Serial.println("help");
-   char command=bluetooth.read();
- Serial.println(command);
- if (command=='o') {pos = openPos;}
- if (command=='c') {pos = closedPos;}
- myservo.write(pos);
+   
+   //char command=bluetooth.read();
+ Serial.println("bluetooth available");
+ //Serial.println(bluetooth.read());
+// if (command=='o') {pos = openPos;}
+// if (command=='c') {pos = closedPos;}
+// myservo.write(pos);
+ 
+  myservo.write(bluetooth.read());
  }
 
  //==================Status check================
 
-int sensorValue = analogRead(potPin);
- if (sensorValue < closedPot) {pot = 'c';}
- if (sensorValue > openPot) {pot = 'o';}
+//int sensorValue = analogRead(potPin);
+// if (sensorValue < closedPot) {pot = 'c';}
+// if (sensorValue > openPot) {pot = 'o';}
 //Serial.println(sensorValue);
 //Serial.println(pot);
 }
