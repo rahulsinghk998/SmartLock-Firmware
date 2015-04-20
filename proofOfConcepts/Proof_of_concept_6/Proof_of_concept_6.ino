@@ -1,10 +1,10 @@
 #include <Servo.h> 
 #include <SoftwareSerial.h>
 
-int bluetoothTx = 4;  // TX-O pin of bluetooth mate, Arduino D2
-int bluetoothRx = 5;  // RX-I pin of bluetooth mate, Arduino D3
+int bluetoothRx = 4;  
+int bluetoothTx = 5;  
 
-SoftwareSerial bluetooth(bluetoothTx, bluetoothRx);
+SoftwareSerial bluetooth(bluetoothRx, bluetoothTx);
 
 Servo myservo;  // create servo object to control a servo 
                 // twelve servo objects can be created on most boards
