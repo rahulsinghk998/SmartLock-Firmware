@@ -1,7 +1,7 @@
 #include <Servo.h> 
 #include <SoftwareSerial.h>
 
-int bluetoothRx = 4;  
+int bluetoothRx = 4;  // setting pin 4 of arduino as rx
 int bluetoothTx = 5;  
 
 SoftwareSerial bluetooth(bluetoothRx, bluetoothTx);
