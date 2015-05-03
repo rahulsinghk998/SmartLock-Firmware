@@ -1,0 +1,22 @@
+Control power to the motor
+
+Determine position of motor shaft
+
+Store position of motor shaft in non volatile memory
+
+Sleep/wake arduino through bluetooth module interrupts
+
+Rotate motor through specified angles
+
+Cut the power to the motor after action is completed
+
+Determine excessive current that flows for specified period of time and cut off power to motor (prevent motor damage)
+
+Alert users (sound/vision?) about the excessive current (which could be due to excessive load encountered by 
+motor as the door is improperly aligned with its slot)
+
+Alert users when battery is getting low.
+
+While turning when excessive load is encountered, intelligently increase the motor torque to overcome the excessive load, 
+then get back to lower torque as SimSim moves the lock to locked/unlocked position.
+
