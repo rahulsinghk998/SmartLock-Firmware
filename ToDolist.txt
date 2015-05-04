@@ -1,3 +1,11 @@
+High priority items (higher listed = higher priority):
+
+-rewrite "getPos" to work with accelerometer
+-add first order protocol function
+-rewrite memory data using proper style
+
+========================================
+
 Control power to the motor
 
 Determine position of motor shaft
