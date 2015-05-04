@@ -1,0 +1,28 @@
+*you may not delete this feature
+**this feature has been implemented
+
+===========
+input
+format: <prefix>,<operator>,<operand>
+==========
+**{o,c} // open and close for testing purposes
+*,rotate,{o,c}
+*,rotateAngle,[0,360]
+*,power,[0,255]
+*,direction,{1,-1}
+*,openAngle,[0,360]
+*,closedAngle,[0,360]
+*,buffer,[0,360]
+*,status, //ask for angle and status
+,settings, //ask for settings
+
+==========
+output
+format: <prefix>,<operator>,<operand>
+==========
+**<random spewing of junk for testing purposes> // deal with it
+*,status,{o,c,u} // open,closed,unknown (probably a jam)
+*,manual,{o,c,u} // lock has just been changed (manually)
+*,automatic,{o,c,u} // you asked me to change it so I did
+*,angle,[0,360]
+,settings,<haven't figured this out yet>

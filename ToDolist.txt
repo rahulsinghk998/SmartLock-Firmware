@@ -1,25 +1,16 @@
 High priority items (higher listed = higher priority):
 
 -rewrite "getPos" to work with accelerometer
+-?if needed to do next item?-encode protocol to op codes?
 -add first order "protocol" function
 -rewrite memory data using proper style
--sleep arduino + BLE
+-sleep arduino + BLE + wake up
 
 -populate protocol function
 
 ========================================
 
-Control power to the motor
-
-Determine position of motor shaft
-
 Store position of motor shaft in non volatile memory
-
-Sleep/wake arduino through bluetooth module interrupts
-
-Rotate motor through specified angles
-
-Cut the power to the motor after action is completed
 
 Determine excessive current that flows for specified period of time and cut off power to motor (prevent motor damage)
 
