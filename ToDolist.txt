@@ -1,6 +1,6 @@
 High priority items (higher listed = higher priority):
 
--rewrite "getPos" to work with accelerometer
+-rewrite "getAngle" to work with accelerometer
 -?if needed to do next item?-encode protocol to op codes?
 -add first order "protocol" function
 -rewrite memory data using proper style
