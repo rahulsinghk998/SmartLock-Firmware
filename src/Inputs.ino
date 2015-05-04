@@ -45,9 +45,9 @@ void motorOut(int pow){ // currently pow doesn't do much, but it will range betw
 
 void turnMotor(int pos, int dir){
   
-  for (x = 0; x < 100; x ++){ // exits if either 1000ms passes or it reaches the desired position.
+  for (x = 0; x < 200; x ++){ // exits if either 2000ms passes or it reaches the desired position.
      motorOut(dir*power); delay(10);
-     if (abs(openPot()-analogRead(potPin)) > potBuffer){break;}
+     if (abs(pos-getAngle()) < potBuffer){break;}
    }
    motorOut(0);
 }
