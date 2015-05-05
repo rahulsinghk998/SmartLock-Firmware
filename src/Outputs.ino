@@ -3,21 +3,19 @@
 
 char getPosition(){ // returns the the position (of the (open, closed, unknown) of the knob
   char pot = 'j';
-  int angle=getAngle()
+  int angle=getAngle();
   if (angle < closedPot()) {pot = 'c';}
   else if (angle > openPot()) {pot = 'o';}
   else {pot = 'm';}
   return pot;}
   
-int closedPot(){return (closedAngle+potBuffer*turnDirection)} 
+int closedPot(){return (closedAngle+potBuffer*turnDirection);} 
 // returns the angle of the lock for it to be considered "closed"
-int openPot(){return (openAngle-potBuffer*turnDirection)}
+int openPot(){return (openAngle-potBuffer*turnDirection);}
 // ditto
 
 void givePosition(){BLE.println(getPosition());} // sends the position (of the (open, closed, unknown) to bluetooth
-
 void giveAngle(){BLE.println(getAngle());}
-
 void jamAlert(){char text='j'; BLE.println(text);} // sends a "j" to BLE.  right now it's just for debugging purposes.
 
 // =========== accelerometer ===============
@@ -40,5 +38,5 @@ void jamAlert(){char text='j'; BLE.println(text);} // sends a "j" to BLE.  right
           
           int getAngle(){
             int sensorValue = analogRead(potPin);
-            return (sensorValue)*potScaling potOffset
+            return (sensorValue)*potScaling+potOffset;
           }

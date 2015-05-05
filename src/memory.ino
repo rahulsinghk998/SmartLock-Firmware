@@ -1,6 +1,6 @@
 
 #include <EEPROM.h>
-boolean restartOverride = false; // for debugging purposes, should normally be false
+boolean restartOverride = true; // for debugging purposes, should normally be false
 
 // use of EEPROM is as follows:
 // EEPROM.write(123,234) writes the byte 234 to the address 123

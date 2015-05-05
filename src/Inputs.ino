@@ -9,8 +9,8 @@ int pos = 0;
 // direction so the dir variable is only used for DC motors.
 
 void changePosition(char command){//recieves either a "o" or a "c"
-  int dir = turnDirection
-  if (command=='o') {pos = openAngle; dir=dir} if (command=='c') {pos = closedAngle; dir=-dir;}
+  int dir = turnDirection;
+  if (command=='o') {pos = openAngle; dir=dir;} if (command=='c') {pos = closedAngle; dir=-dir;}
   turnMotor(pos,dir); // this function is different for servo and dc motor
   if (getPosition() != command) {jamAlert();}
 }
@@ -27,26 +27,43 @@ void turnMotor(int pos,int dir){//dir actually isn't used
 
 //======================DC MOTOR======================
 
+int motor1 = 10; int motor2 = 11;
+
+void setupMotors(){
+  pinMode(motor1,OUTPUT);
+  pinMode(motor2,OUTPUT);
+}
+
 void motorTest(char dir){
-  int len = 200
+  int len = 1000;
   if (dir == 'r') {littleTurnMotor(len,turnDirection);}
-  else if (dir == 'l') {littleMotor(len,-turnDirection);}
+  else if (dir == 'l') {littleTurnMotor(len,-turnDirection);}
 }
 
 void littleTurnMotor(int len, int dir){
-  motorOut(255*dir);
+  Serial.println("turning motor");
+  digitalWrite(10,HIGH);
+  digitalWrite(13,HIGH);
+  digitalWrite(11,LOW);
+  delay(1000);
+  digitalWrite(10,LOW);
+  digitalWrite(11,LOW);
+  digitalWrite(13,LOW);
+  /*
+  motorOut(255);
   delay(len);
   motorOut(0);
-}  
+  */
+}
 
-int motor1 = 8; int motor2 = 10;
-
-void motorOut(int pow){ // currently pow doesn't do much, but it will range between -255 to 255
+void motorOut(int power1){ // currently pow doesn't do much, but it will range between -255 to 255
 
   int motor1Val; int motor2Val;
+  Serial.println("motorrunning");
+  Serial.println(power1);
   
-  if (pow > 10){motor1Val = HIGH; motor2Val=LOW;}
-  else if (pow < -10){motor1Val = LOW; motor2Val=HIGH;}
+  if (power1 > 10){motor1Val = HIGH; motor2Val=LOW;}
+  else if (power1 < -10){motor1Val = LOW; motor2Val=HIGH;}
   else {motor1Val = LOW; motor2Val=LOW;}
   
   digitalWrite(motor1,motor1Val);

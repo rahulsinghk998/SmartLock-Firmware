@@ -1,8 +1,8 @@
 #include <Servo.h> 
 #include <SoftwareSerial.h>
 
-int bluetoothRx = 4;  // setting pin 4 of arduino as rx
-int bluetoothTx = 5;  
+int bluetoothRx = 2;
+int bluetoothTx = 3;  
 
 SoftwareSerial bluetooth(bluetoothRx, bluetoothTx);
 
@@ -25,6 +25,7 @@ void setup()
   myservo.attach(servoPin);  // attaches the servo on pin 9 to the servo object 
   bluetooth.begin(9600);
   pinMode(13,OUTPUT);
+  digitalWrite(8,HIGH);
 } 
  
 void loop() {
@@ -36,6 +37,7 @@ digitalWrite(13,LOW);
  //==================Take commands================
  
  Serial.println("hey");
+ bluetooth.println("hi");
  if (bluetooth.available() > 0) { 
    
    //char command=bluetooth.read();

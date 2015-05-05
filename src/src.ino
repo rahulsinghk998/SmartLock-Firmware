@@ -18,7 +18,9 @@ SoftwareSerial BLE(2, 3); // RX, TX, it assigns these two pins to the serial mon
 //===========DEBUGGING
 
 void monitorOutput(){
-  BLE.print(openAngle);BLE.print(closedAngle);BLE.print(pos); // print stuff to BLE for debugging purposes.
+  givePosition();
+  giveAngle();
+  // print stuff to BLE for debugging purposes.
   // this corresponds to the random strings of characters // deal with it "output" in the protocol 2 document.
 }
 
@@ -34,6 +36,7 @@ void setup() { // executes this when it starts up.
   pinMode(13,OUTPUT); // the pin13 digital pin is used for debugging purposes, and corresponds to the built-in LED.  
   // btw, the two other built-in LEDS corresponds to the pin1 and pin0 digital pins (remember that those are rx and tx)
   startupSettings(); // see "memory" file
+  setupMotors();
 }
  
 void loop() {// this is an infinite loop.  It runs until you turn the arduino off.
@@ -41,12 +44,15 @@ void loop() {// this is an infinite loop.  It runs until you turn the arduino of
   delay(100); digitalWrite(13,HIGH); delay(100); digitalWrite(13,LOW); // otherwise it's going to break
   // this is the blinking led 13.  delay is just a delay in miliseconds.  Kind of to keep the loop rate reasonable.
 
+
 if (BLE.available() > 0) {char command=BLE.read(); 
 
+Serial.println("got ble");
 // =============================== MOST IMPORTANT ==========================
 changePosition(command); // your job is to replace this line. 
 // right now change position only accepts 'c' and 'o'
-motorTest(command);} // this one accepts 'r' and 'l'
+motorTest(command); // this one accepts 'r' and 'l'
+}
 // =============================== MOST IMPORTANT ==========================
 
       // testing purposes
