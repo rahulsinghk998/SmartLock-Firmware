@@ -41,7 +41,7 @@ void setup() { // executes this when it starts up.
  
 void loop() {// this is an infinite loop.  It runs until you turn the arduino off.
   
-  delay(100); digitalWrite(13,HIGH); delay(100); digitalWrite(13,LOW); // otherwise it's going to break
+  delay(100); digitalWrite(13,HIGH); delay(200); digitalWrite(13,LOW); // otherwise it's going to break
   // this is the blinking led 13.  delay is just a delay in miliseconds.  Kind of to keep the loop rate reasonable.
 
 

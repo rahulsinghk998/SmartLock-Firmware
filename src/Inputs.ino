@@ -35,39 +35,30 @@ void setupMotors(){
 }
 
 void motorTest(char dir){
-  int len = 1000;
+  int len = 3000;
   if (dir == 'r') {littleTurnMotor(len,turnDirection);}
   else if (dir == 'l') {littleTurnMotor(len,-turnDirection);}
 }
 
 void littleTurnMotor(int len, int dir){
-  Serial.println("turning motor");
-  digitalWrite(10,HIGH);
-  digitalWrite(13,HIGH);
-  digitalWrite(11,LOW);
-  delay(1000);
-  digitalWrite(10,LOW);
-  digitalWrite(11,LOW);
-  digitalWrite(13,LOW);
-  /*
-  motorOut(255);
+  
+  motorOut(255*dir);
   delay(len);
   motorOut(0);
-  */
 }
 
 void motorOut(int power1){ // currently pow doesn't do much, but it will range between -255 to 255
 
-  int motor1Val; int motor2Val;
-  Serial.println("motorrunning");
   Serial.println(power1);
-  
-  if (power1 > 10){motor1Val = HIGH; motor2Val=LOW;}
-  else if (power1 < -10){motor1Val = LOW; motor2Val=HIGH;}
-  else {motor1Val = LOW; motor2Val=LOW;}
+
+  int motor1Val; int motor2Val;
+  if (power1 > 10){motor1Val = HIGH; motor2Val=LOW; Serial.println("forwards");}
+  if (power1 < -10){motor1Val = LOW; motor2Val=HIGH; Serial.println("backwards");}
+  if ((power1 < 11) and (power1 > -11)){motor1Val = LOW; motor2Val=LOW; Serial.println("stop");}
   
   digitalWrite(motor1,motor1Val);
   digitalWrite(motor2,motor2Val);
+   Serial.println("sent Value");
 }
 
 /*
