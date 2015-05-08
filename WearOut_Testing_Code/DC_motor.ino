@@ -1,4 +1,4 @@
-int motor1 = 10; int motor2 = 11;
+int motor1 = 12; int motor2 = 13;
 
 void setupMotors(){
   pinMode(motor1,OUTPUT);

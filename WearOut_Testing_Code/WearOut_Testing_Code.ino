@@ -3,7 +3,7 @@
 SoftwareSerial BLE(2, 3); // RX, TX
 
 int count = 0;
-int turnDuration = 3000;
+int turnDuration = 6000;
 
 void setup() {
   BLE.begin(9600);
@@ -14,12 +14,14 @@ void setup() {
 
 void loop(){
   
-  motorOut(255);
-  digitalWrite(13,HIGH);
+  //motorOut(255);
+  digitalWrite(12,HIGH);
+  digitalWrite(13,LOW);
   delay(turnDuration);
   
-  motorOut(-255);
-  digitalWrite(13,LOW);
+  //motorOut(-255);
+  digitalWrite(12,LOW);
+  digitalWrite(13,HIGH);
   delay(turnDuration);
   
   count = count+1;
