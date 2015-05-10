@@ -128,6 +128,8 @@ void jamAlert(){
 //					    LOOP FOR TESTING				 	//
 //**********************************************************************************************//
 
+/*
+
 void loop(){
 	char position;
 	position=getPosition();
@@ -152,7 +154,7 @@ void loop(){
 	delay(100);	
 }
 
-
+*/
 
 
 
