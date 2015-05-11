@@ -3,7 +3,7 @@
 SoftwareSerial BLE(2, 3); // RX, TX
 
 int count = 0;
-int turnDuration = 6000;
+int turnDuration = 3800;
 
 void setup() {
   BLE.begin(9600);
