@@ -27,16 +27,16 @@ void turnMotor(int pos,int dir){//dir actually isn't used
 
 //======================DC MOTOR======================
 
-int motor1 = 10; int motor2 = 11;
+int motorDriverPin1 = 10; int motorDriverPin2 = 11;
 
-void setupMotors(){
-  pinMode(motor1,OUTPUT);
-  pinMode(motor2,OUTPUT);
+void setupArduinoToControlMotorDriver(){
+  pinMode(motorDriverPin1,OUTPUT);
+  pinMode(motorDriverPin2,OUTPUT);
 }
 
-void motorTest(char dir){
+void motorTest(char direction){
   int len = 3000;
-  if (dir == 'r') {littleTurnMotor(len,turnDirection);}
+  if (direction == 'r') {littleTurnMotor(len,turnDirection);}
   else if (dir == 'l') {littleTurnMotor(len,-turnDirection);}
 }
 
@@ -52,13 +52,20 @@ void motorOut(int power1){ // currently pow doesn't do much, but it will range b
   Serial.println(power1);
 
   int motor1Val; int motor2Val;
-  if (power1 > 10){motor1Val = HIGH; motor2Val=LOW; Serial.println("forwards");}
-  if (power1 < -10){motor1Val = LOW; motor2Val=HIGH; Serial.println("backwards");}
-  if ((power1 < 11) and (power1 > -11)){motor1Val = LOW; motor2Val=LOW; Serial.println("stop");}
   
-  digitalWrite(motor1,motor1Val);
-  digitalWrite(motor2,motor2Val);
-   Serial.println("sent Value");
+  if (power1 > 10)
+  {motor1Val = power1; motor2Val=0; Serial.println("forwards");}
+  
+  else if (power1 < -10)
+  {motor1Val = 0; motor2Val=-power1; Serial.println("backwards");}
+  
+  else
+  {motor1Val = 0; motor2Val=0; Serial.println("stop");}
+  
+  analogWrite(motorDriverPin1,motor1Val);
+  analogWrite(motorDriverPin2,motor2Val);
+  
+  Serial.println("sent Value");
 }
 
 /*
