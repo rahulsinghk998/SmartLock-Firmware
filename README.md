@@ -6,7 +6,7 @@ https://docs.google.com/spreadsheets/d/19ZyzZuSoSpPwH2bXSZDw7PbBoHNsoOeRNcEBVYKH
 ###Protocol:
 https://docs.google.com/document/d/1yMPvARva38e-8PWL3v8qW1j1Ls_Tr_gURRmiZ7balbk/edit
 
-##==================================Documentation==================================
+## === Documentation === 
 
 ####Flashing Arduino to Atmega: 
 https://docs.google.com/document/d/11wH9i67JPmQFfVRbndJaDk9qXwS9hrCeSqQtKkohldw/edit
