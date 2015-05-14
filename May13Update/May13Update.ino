@@ -3,11 +3,9 @@
 #import <Arduino.h>
 
 #include <SoftwareSerial.h>
-
 #include "Driver_BLE.h"
 
 #include <Wire.h>
-
 #include "Driver_Accel.h"
 
 #include "Driver_Memory.h"
@@ -32,7 +30,7 @@ void setup() {pinMode(13,OUTPUT);
 void loop() {delay(100); digitalWrite(13,HIGH); delay(200); digitalWrite(13,LOW);
   if (BLE.available() > 0) {
     char command=BLE.read();
-    Serial.print("command:"); Serial.println(command);
+      Serial.print("command:"); Serial.println(command);
     receiveX(command);
 }
   transmitX();

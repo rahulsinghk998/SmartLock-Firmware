@@ -12,9 +12,6 @@
 //					GLOBAL VARIABLES				 	//
 //**********************************************************************************************//
 
-int desiredAngle = 0
-int desiredPosition = turnDirection
-
 //**********************************************************************************************//
 //				   FUNCTIONS DECLARATIONS				 	//
 //**********************************************************************************************//
@@ -29,7 +26,7 @@ char getPosition();			//Gives the position whether [Closed:Open:Intermediate]
 // CURRENTLY IS NOT FINAL CODE, THIS IS JUST PLACEHOLDER THAT WORKS, REAALLY DUMB
 
 void turnMotor(int pos,int dir){//Moves motor to angle pos, by direction dir.
-  motorOut(dir*100);
+  motorOut(dir*255);
   delay(4500);
   motorOut(0);
 }

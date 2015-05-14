@@ -1,27 +1,26 @@
+// These are the functions that will be called by receiveX()
+
 //**********************************************************************************************//
 //					DEFINES						 	//
 //**********************************************************************************************//
-
-#define		BLE_RX	        2		//RX pin of ble chip
-#define		BLE_TX          3               //TX pin of ble chip
 
 //**********************************************************************************************//
 //					GLOBAL VARIABLES				 	//
 //**********************************************************************************************//
 
-SoftwareSerial BLE = SoftwareSerial(BLE_RX, BLE_TX); // RX, TX, it assigns these two pins to the serial monitor "BLE"
-
 //**********************************************************************************************//
 //				   FUNCTIONS DECLARATIONS				 	//
 //**********************************************************************************************//
 
-void BLE_init();                        //BLE initialization
+void changePosition(char command);       //Moves motor to that position (open, closed)
 
 //**********************************************************************************************//
 //					FUNCTIONS					 	//
 //**********************************************************************************************//
 
-void BLE_init(){
-  BLE.begin(9600); // main communication
-  Serial.begin(9600); // for debugging
+void changePosition(char command){//recieves either a "o" or a "c"
+  int dir = turnDirection; int pos;
+  if (command=='o') {pos = openAngle;   dir=dir;  turnMotor(pos,dir);} 
+  if (command=='c') {pos = closedAngle; dir=-dir; turnMotor(pos,dir);}
+  Serial.print(pos);Serial.print(dir);
 }

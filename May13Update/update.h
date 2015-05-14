@@ -1,27 +1,36 @@
+// These are the functions that will run every loop.  
+// The existence of these functions is so that everything works off the same delay() function
+
 //**********************************************************************************************//
 //					DEFINES						 	//
 //**********************************************************************************************//
 
-#define		BLE_RX	        2		//RX pin of ble chip
-#define		BLE_TX          3               //TX pin of ble chip
+#define MOTOR_LOOP_BUFFER      10    // degrees at which motor can have error
 
 //**********************************************************************************************//
 //					GLOBAL VARIABLES				 	//
 //**********************************************************************************************//
 
-SoftwareSerial BLE = SoftwareSerial(BLE_RX, BLE_TX); // RX, TX, it assigns these two pins to the serial monitor "BLE"
+int desiredAngle = 0
+int desiredDirection = turnDirection
+boolean motorActive = false
 
 //**********************************************************************************************//
 //				   FUNCTIONS DECLARATIONS				 	//
 //**********************************************************************************************//
 
-void BLE_init();                        //BLE initialization
+
 
 //**********************************************************************************************//
 //					FUNCTIONS					 	//
 //**********************************************************************************************//
 
-void BLE_init(){
-  BLE.begin(9600); // main communication
-  Serial.begin(9600); // for debugging
-}
+void motor_update(){
+  if motorActive {
+    if ( abs( getAngle() - desiredAngle ) > MOTOR_LOOP_BUFFER ) {
+      motorOut(255*desiredDirection); }
+     else {
+       motorOut(0);
+       motorActive = false; 
+     }
+  }
