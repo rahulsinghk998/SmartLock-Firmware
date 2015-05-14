@@ -32,12 +32,13 @@ void motor_init(){
 // actual motor driver function
 
 void motorOut(int voltage){
+  int dutyCycle = voltage;
   
-  if (voltage > MOTOR_DUTY_BUFFER)
-  {analogWrite(PIN_MOTOR_A, rotationalVelocity);analogWrite(PIN_MOTOR_B, 0);Serial.println("forwards");}
+  if (dutyCycle > MOTOR_DUTY_BUFFER)
+  {analogWrite(PIN_MOTOR_A, dutyCycle);analogWrite(PIN_MOTOR_B, 0);Serial.println("forwards");}
   
-  else if (rotationalVelocity < -MOTOR_DUTY_BUFFER)
-  {analogWrite(PIN_MOTOR_B, -rotationalVelocity);analogWrite(PIN_MOTOR_A, 0);Serial.println("backwards");}
+  else if (dutyCycle < -MOTOR_DUTY_BUFFER)
+  {analogWrite(PIN_MOTOR_B, -dutyCycle);analogWrite(PIN_MOTOR_A, 0);Serial.println("backwards");}
   
   else
   {analogWrite(PIN_MOTOR_A, 0);analogWrite(PIN_MOTOR_B, 0);Serial.println("stop");}

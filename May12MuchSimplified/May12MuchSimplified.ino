@@ -1,24 +1,49 @@
-// include other code
+//**********************************************************************************************//
+//					IMPORTS						 	//
+//**********************************************************************************************//
 
 #import <Arduino.h>
+
+// =============BLE============
 
 #include <SoftwareSerial.h>
 
 #include "Driver_BLE.h"
 
-#include <Wire.h>
+// ============Accel============
+
+#include "I2Cdev.h"
+
+#include "MPU6050_6Axis_MotionApps20.h"
+//#include "MPU6050.h" // not necessary if using MotionApps include file
+
+// Arduino Wire library is required if I2Cdev I2CDEV_ARDUINO_WIRE implementation
+// is used in I2Cdev.h
+#if I2CDEV_IMPLEMENTATION == I2CDEV_ARDUINO_WIRE
+    #include "Wire.h"
+#endif
 
 #include "Driver_Accel.h"
 
+// ============Memory============
+
 #include "Driver_Memory.h"
+
+// ============Motor============
 
 #include "Driver_Motor.h"
 
+// ============Helper============
+
 #include "Helper.h"
+
+// ============Command Functions============
 
 #include "command_functions.h"
 
-//===============setup and loop=================
+//**********************************************************************************************//
+//					SETUP AND LOOP					 	//
+//**********************************************************************************************//
 
 //The arduino runs all the code that we write, then it activates the setup function, then it keeps running
 // the loop function until we shut it off
@@ -38,7 +63,9 @@ void loop() {delay(100); digitalWrite(13,HIGH); delay(200); digitalWrite(13,LOW)
   transmitX();
 }
 
-//===============main functions============
+//**********************************************************************************************//
+//					MAIN FUNCTIONS  				 	//
+//**********************************************************************************************//
 
 void transmitX(){
   BLE.println(getAngle());
