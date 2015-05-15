@@ -1,15 +1,35 @@
-// I2Cdev and MPU6050 must be installed as libraries, or else the .cpp/.h files
-// for both classes must be in the include path of your project
-#include "I2Cdev.h"
 
-#include "MPU6050_6Axis_MotionApps20.h"
-//#include "MPU6050.h" // not necessary if using MotionApps include file
+//**********************************************************************************************//
+//					DEFINES						 	//
+//**********************************************************************************************//
 
-// Arduino Wire library is required if I2Cdev I2CDEV_ARDUINO_WIRE implementation
-// is used in I2Cdev.h
-#if I2CDEV_IMPLEMENTATION == I2CDEV_ARDUINO_WIRE
-    #include "Wire.h"
-#endif
+//uncomment the one you actually want to read from
+
+#define YAW_VECTOR_ACTIVE                   // rotation z-axis
+//#define PITCH_VECTOR_ACTIVE               // rotation y-axis
+//#define ROLL_VECTOR_ACTIVE                // rotation x-axis
+
+#define X_GYRO_OFF 220                      // offsets, don't actually know what these are
+#define Y_GYRO_OFF 76
+#define Z_GYRO_OFF -85
+#define Z_ACCEL_OFF 1788
+
+//**********************************************************************************************//
+//					GLOBAL VARIABLES				 	//
+//**********************************************************************************************//
+
+//**********************************************************************************************//
+//				   FUNCTIONS DECLARATIONS				 	//
+//**********************************************************************************************//
+
+float getYawPitchRoll();        // Gives the yaw/pitch/roll 
+                                // (depends on what you have uncommented in the defines)
+                                // occasionally spits out a zero
+float getAngle();               // gives as such, but filters out the zero
+
+//**********************************************************************************************//
+//					SETUP    					 	//
+//**********************************************************************************************//
 
 MPU6050 mpu;
 
@@ -26,21 +46,6 @@ VectorInt16 aaReal;     // [x, y, z]            gravity-free accel sensor measur
 VectorInt16 aaWorld;    // [x, y, z]            world-frame accel sensor measurements
 VectorFloat gravity;    // [x, y, z]            gravity vector
 float ypr[3];           // [yaw, pitch, roll]   yaw/pitch/roll container and gravity vector
-
-// ================================================================
-// ===               DEFINE                ===
-// ================================================================
-
-#define YAW_VECTOR_ACTIVE // uncomment the one you actually want to read from
-//#define PITCH_VECTOR_ACTIVE
-//#define ROLL_VECTOR_ACTIVE
-
-// ================================================================
-// ===               FUNCTIONS                ===
-// ================================================================
-
-float getYawPitchRoll();
-float getAngle();
 
 // ================================================================
 // ===               INTERRUPT DETECTION ROUTINE                ===
@@ -101,8 +106,10 @@ void accel_init() {
 }
 
 // ================================================================
-// ===                    MAIN PROGRAM LOOP                     ===
+// ===                    MAIN PROGRAM                     ===
 // ================================================================
+
+// This is needed as a separate program because occasionally the main program spits out 0.00
 
 float getAngle(){
   while (true) {
@@ -110,6 +117,7 @@ float getAngle(){
     if (val != 0) { return val;}
   }
 }
+//============
 
 float getYawPitchRoll() {
     // wait for MPU interrupt or extra packet(s) available

@@ -1,4 +1,4 @@
-// These are the functions that will be called by receiveX()
+// These are the functions that will be called directly by receiveX()
 
 //**********************************************************************************************//
 //					DEFINES						 	//
@@ -12,7 +12,7 @@
 //				   FUNCTIONS DECLARATIONS				 	//
 //**********************************************************************************************//
 
-void changePosition(char command);       //Moves motor to that position (open, closed)
+//void changePosition(char command);       //Moves motor to that position (open, closed)
 
 //**********************************************************************************************//
 //					FUNCTIONS					 	//

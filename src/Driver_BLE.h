@@ -2,8 +2,8 @@
 //					DEFINES						 	//
 //**********************************************************************************************//
 
-#define		BLE_RX	        2		//RX pin of ble chip
-#define		BLE_TX          3               //TX pin of ble chip
+#define		BLE_RX	        3		//RX pin of ble chip
+#define		BLE_TX          4               //TX pin of ble chip
 
 //**********************************************************************************************//
 //					GLOBAL VARIABLES				 	//
