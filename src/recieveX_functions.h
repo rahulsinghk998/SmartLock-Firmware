@@ -12,15 +12,10 @@
 //				   FUNCTIONS DECLARATIONS				 	//
 //**********************************************************************************************//
 
-//void changePosition(char command);       //Moves motor to that position (open, closed)
+
 
 //**********************************************************************************************//
 //					FUNCTIONS					 	//
 //**********************************************************************************************//
 
-void changePosition(char command){//recieves either a "o" or a "c"
-  int dir = turnDirection; int pos;
-  if (command=='o') {pos = openAngle;   dir=dir;  turnMotor(pos,dir);} 
-  if (command=='c') {pos = closedAngle; dir=-dir; turnMotor(pos,dir);}
-  Serial.print(pos);Serial.print(dir);
-}
+

@@ -2,14 +2,15 @@
 //					DEFINES						 	//
 //**********************************************************************************************//
 
-#define		BLE_RX	        3		//RX pin of ble chip
-#define		BLE_TX          4               //TX pin of ble chip
+#define		ARDUINO_RX_BLE_TX          3               //make pin 3 of arduino as RX and map it to TX of BLE
+#define		ARDUINO_TX_BLE_RX          4               //make pin 4 of arduino as TX and map it to RX of BLE
+
 
 //**********************************************************************************************//
 //					GLOBAL VARIABLES				 	//
 //**********************************************************************************************//
 
-SoftwareSerial BLE = SoftwareSerial(BLE_RX, BLE_TX); // RX, TX, it assigns these two pins to the serial monitor "BLE"
+SoftwareSerial BLE = SoftwareSerial(ARDUINO_RX_BLE_TX, ARDUINO_TX_BLE_RX); // RX, TX of arduino 
 
 //**********************************************************************************************//
 //				   FUNCTIONS DECLARATIONS				 	//
@@ -22,6 +23,6 @@ void BLE_init();                        //BLE initialization
 //**********************************************************************************************//
 
 void BLE_init(){
-  BLE.begin(9600); // main communication
-  Serial.begin(9600); // for debugging
+  BLE.begin(9600); // set baud rate for main communication port
+  Serial.begin(9600); // set baud rate for debugging port
 }

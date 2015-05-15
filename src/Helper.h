@@ -16,18 +16,13 @@
 //				   FUNCTIONS DECLARATIONS				 	//
 //**********************************************************************************************//
 
-void turnMotor(int pos,int dir);         //Moves motor to angle pos, by direction dir
 char getPosition();			//Gives the position whether [Closed:Open:Intermediate]
 
 //**********************************************************************************************//
 //					FUNCTIONS					 	//
 //**********************************************************************************************//
 
-void turnMotor(int pos,int dir){//Moves motor to angle pos, by direction dir.
-  desiredAngle = pos;
-  desiredDirection = dir;
-  motorActive = true;
-}
+
 
 /*
 	Returns the the position of the (open, closed, unknown) of the knob
